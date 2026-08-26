@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Sincronizar .tmux.conf si existe en /workspace
+if [ -f "/workspace/.tmux.conf" ]; then
+    cp /workspace/.tmux.conf /home/node/.tmux.conf 2>/dev/null || true
+fi
+if [ -f "/workspace/.tmux.conf.local" ]; then
+    cp /workspace/.tmux.conf.local /home/node/.tmux.conf.local 2>/dev/null || true
+fi
+
+# Si no estamos dentro de tmux, iniciar o reconectar sesión de tmux directamente
+if [ -z "$TMUX" ]; then
+    exec tmux new-session -A -s vibe
+else
+    exec /bin/zsh "$@"
+fi

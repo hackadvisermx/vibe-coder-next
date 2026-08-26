@@ -1,0 +1,91 @@
+FROM node:22-bookworm
+
+# Evitar prompts interactivos durante la instalación
+ENV DEBIAN_FRONTEND=noninteractive
+
+# 1. Instalar herramientas básicas del sistema y utilidades modernas
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    wget \
+    gnupg \
+    git \
+    openssh-client \
+    sudo \
+    zsh \
+    ripgrep \
+    jq \
+    tmux \
+    nano \
+    vim \
+    procps \
+    build-essential \
+    python3 \
+    fzf \
+    bat \
+    && rm -rf /var/lib/apt/lists/* \
+    && ln -s /usr/bin/batcat /usr/local/bin/bat
+
+# 2. Instalar GitHub CLI (gh) y Eza
+RUN mkdir -p -m 755 /etc/apt/keyrings \
+    && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+    && chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+    && wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | gpg --dearmor -o /etc/apt/keyrings/gierens.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | tee /etc/apt/sources.list.d/gierens.list \
+    && chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends gh eza \
+    && rm -rf /var/lib/apt/lists/*
+
+# 3. Instalar Lazygit
+RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') \
+    && ARCH=$(dpkg --print-architecture | sed 's/arm64/arm64/;s/amd64/x86_64/') \
+    && curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_${ARCH}.tar.gz" \
+    && tar -xf /tmp/lazygit.tar.gz -C /usr/local/bin lazygit \
+    && rm -f /tmp/lazygit.tar.gz
+
+# 4. Instalar herramientas de IA, despliegue y gestores de paquetes rápidos (pnpm, bun)
+RUN npm install -g \
+    @railway/cli \
+    @anthropic-ai/claude-code \
+    @openai/codex \
+    pnpm \
+    bun \
+    && npm cache clean --force
+
+# 5. Configurar usuario no-root 'node' y cambiar shell por defecto a zsh
+RUN echo "node ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+    && chsh -s /bin/zsh node \
+    && mkdir -p /workspace /home/node/.config /home/node/.claude /home/node/.codex /home/node/.railway \
+    && chown -R node:node /workspace /home/node
+
+# 6. Instalar Oh My Zsh y plugins como usuario node
+USER node
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended \
+    && git clone https://github.com/zsh-users/zsh-autosuggestions /home/node/.oh-my-zsh/custom/plugins/zsh-autosuggestions \
+    && git clone https://github.com/zsh-users/zsh-syntax-highlighting /home/node/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting \
+    && git clone https://github.com/zsh-users/zsh-completions /home/node/.oh-my-zsh/custom/plugins/zsh-completions \
+    && git clone https://github.com/zsh-users/zsh-history-substring-search /home/node/.oh-my-zsh/custom/plugins/zsh-history-substring-search
+
+USER root
+
+# 7. Copiar scripts y plantilla de zshrc
+COPY .zshrc.template /usr/local/etc/zshrc.template
+COPY welcome.sh /usr/local/bin/vibe-welcome
+COPY vibe-shell /usr/local/bin/vibe-shell
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/vibe-welcome /usr/local/bin/vibe-shell /usr/local/bin/docker-entrypoint.sh \
+    && cp /usr/local/etc/zshrc.template /home/node/.zshrc \
+    && chown node:node /home/node/.zshrc
+
+# 8. Directorio de trabajo y usuario final
+WORKDIR /workspace
+USER node
+
+# Configurar shell por defecto y variables de terminal
+ENV SHELL=/bin/zsh
+ENV TERM=screen-256color
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["sleep", "infinity"]
