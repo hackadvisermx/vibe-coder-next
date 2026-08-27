@@ -81,9 +81,10 @@ COPY .tmux.conf /usr/local/etc/tmux.conf
 COPY .tmux.conf.local /usr/local/etc/tmux.conf.local
 COPY welcome.sh /usr/local/bin/vibe-welcome
 COPY vibe-shell /usr/local/bin/vibe-shell
+COPY help.sh /usr/local/bin/vibe-help
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
-RUN chmod +x /usr/local/bin/vibe-welcome /usr/local/bin/vibe-shell /usr/local/bin/docker-entrypoint.sh \
+RUN chmod +x /usr/local/bin/vibe-welcome /usr/local/bin/vibe-shell /usr/local/bin/vibe-help /usr/local/bin/docker-entrypoint.sh \
     && cp /usr/local/etc/zshrc.template /home/node/.zshrc \
     && cp /usr/local/etc/tmux.conf /home/node/.tmux.conf \
     && cp /usr/local/etc/tmux.conf.local /home/node/.tmux.conf.local \

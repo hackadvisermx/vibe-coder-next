@@ -13,7 +13,7 @@ CYAN='\033[1;36m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
 MAGENTA='\033[1;35m'
-GRAY='\033[1;30m'
+GRAY='\033[0;90m'
 NC='\033[0m'
 
 echo -e "${CYAN}"
@@ -32,4 +32,5 @@ echo -e "  Paquetes:     ${YELLOW}pn${NC} (pnpm) | ${YELLOW}b${NC} (bun) | ${YEL
 echo -e "  Utilidades:   ${YELLOW}ls / ll / tree${NC} (eza) | ${YELLOW}cat${NC} (bat) | ${YELLOW}Ctrl+T / Ctrl+R${NC} (fzf)"
 echo -e "  Prefijo Tmux: ${MAGENTA}Ctrl + a${NC} (o ${MAGENTA}Ctrl + b${NC}) | Desacoplar: ${MAGENTA}prefix + d${NC}"
 echo -e "${GRAY}  ───────────────────────────────────────────────────────────────────${NC}"
+echo -e "  💡 Escribe ${YELLOW}ayuda${NC} o ${YELLOW}vibe-help${NC} para ver la guía completa de todos los atajos"
 echo ""

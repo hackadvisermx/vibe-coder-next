@@ -36,6 +36,11 @@ bindkey '^[[B' history-substring-search-down
 # ==========================================
 # Aliases de Productividad (Vibe Coding)
 # ==========================================
+# Ayuda y atajos
+alias vibe-help="vibe-help"
+alias ayuda="vibe-help"
+alias help-vibe="vibe-help"
+
 # IAs y Despliegue
 alias c="claude"
 alias cx="codex"

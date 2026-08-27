@@ -52,7 +52,17 @@ if [ -f "$TARGET_DIR/.env" ]; then
     ENV_VARS+=(--env-file "$TARGET_DIR/.env")
 fi
 
-# 6. Ejecución: Si se pasan comandos específicos o modo interactivo
+# 6. Comprobar si se solicitó la ayuda directa
+if [ "$1" = "help" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ] || [ "$1" = "ayuda" ]; then
+    exec docker run --rm $DOCKER_TTY \
+        -w /workspace \
+        "${VOLUMES[@]}" \
+        "${ENV_VARS[@]}" \
+        "$IMAGE_NAME" \
+        /usr/local/bin/vibe-help
+fi
+
+# 7. Ejecución: Si se pasan comandos específicos o modo interactivo
 if [ "$#" -gt 0 ]; then
     exec docker run --rm $DOCKER_TTY \
         -w /workspace \
