@@ -80,7 +80,11 @@ Prefijo configurado: **`Ctrl + a`** (o `Ctrl + b`)
 | **Crear nueva ventana/pestaña** | `Ctrl + a` seguido de `c` |
 | **Cambiar entre ventanas** | `Ctrl + a` seguido del número (`0`, `1`, `2`...) o `n` (siguiente) / `p` (anterior) |
 | **Maximizar / Restaurar panel actual** | `Ctrl + a` seguido de `z` |
-| **Desconectarse de la sesión (sin cerrarla)** | `Ctrl + a` seguido de `d` (vuelves con `make shell`) |
+| **Activar / Desactivar Mouse** | `Ctrl + a` seguido de `m` *(Activo por defecto)* |
+| **Seleccionar panel / Cambiar ventana** | **Clic con el mouse** |
+| **Redimensionar paneles** | **Arrastrar bordes con el mouse** |
+| **Scroll en historial** | **Rueda del mouse / Trackpad** |
+| **Desconectarse de la sesión (sin cerrarla)** | `Ctrl + a` seguido de `d` (vuelves con `make shell` o `vibe`) |
 | **Cerrar panel actual** | Escribir `exit` o `Ctrl + d` |
 
 ---

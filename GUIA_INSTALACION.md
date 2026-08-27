@@ -195,6 +195,9 @@ Dentro del shell del contenedor (`make shell`):
 | `Ctrl + a` seguido de `-` | Dividir panel de Tmux horizontalmente |
 | `Ctrl + a` seguido de `\|` | Dividir panel de Tmux verticalmente |
 | `Ctrl + a` seguido de `d` | Desconectarse de Tmux sin cerrar tus procesos |
+| **Clic con el mouse** | Seleccionar panel o cambiar de pestaña |
+| **Arrastrar con el mouse** | Redimensionar tamaño de los paneles |
+| **Rueda / Trackpad** | Scroll y desplazamiento en el historial |
 
 ---
 
