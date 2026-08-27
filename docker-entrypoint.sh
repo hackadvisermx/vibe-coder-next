@@ -1,16 +1,21 @@
 #!/usr/bin/env bash
 set -e
 
-# Sincronizar archivo de configuración de tmux desde el workspace
+# Configurar .tmux.conf (desde /workspace o plantilla base del sistema)
 if [ -f "/workspace/.tmux.conf" ]; then
     cp /workspace/.tmux.conf /home/node/.tmux.conf 2>/dev/null || true
-    chown node:node /home/node/.tmux.conf 2>/dev/null || true
+elif [ -f "/usr/local/etc/tmux.conf" ]; then
+    cp /usr/local/etc/tmux.conf /home/node/.tmux.conf 2>/dev/null || true
 fi
+chown node:node /home/node/.tmux.conf 2>/dev/null || true
 
+# Configurar .tmux.conf.local (desde /workspace o plantilla base del sistema)
 if [ -f "/workspace/.tmux.conf.local" ]; then
     cp /workspace/.tmux.conf.local /home/node/.tmux.conf.local 2>/dev/null || true
-    chown node:node /home/node/.tmux.conf.local 2>/dev/null || true
+elif [ -f "/usr/local/etc/tmux.conf.local" ]; then
+    cp /usr/local/etc/tmux.conf.local /home/node/.tmux.conf.local 2>/dev/null || true
 fi
+chown node:node /home/node/.tmux.conf.local 2>/dev/null || true
 
 # Inicializar archivos de historial del proyecto
 touch /workspace/.bash_history /workspace/.zsh_history 2>/dev/null || true
@@ -38,9 +43,9 @@ alias pn="pnpm"
 alias b="bun"
 alias dev="npm run dev"
 alias build="npm run build"
-alias ls="eza --icons"
-alias ll="eza -la --icons"
-alias tree="eza --tree --icons"
+alias ls="eza --icons=always"
+alias ll="eza -la --icons=always"
+alias tree="eza --tree --icons=always"
 alias cat="bat --paging=never"
 
 if [ -t 0 ] && [ -t 1 ] && [ -n "$TMUX" ] && [ -z "$VIBE_BANNER_SHOWN" ]; then

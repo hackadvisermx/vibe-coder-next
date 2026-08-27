@@ -75,16 +75,19 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
 
 USER root
 
-# 7. Copiar scripts, plantillas de zshrc y tmux
+# 7. Copiar scripts y configuraciones completas de tmux y zsh
 COPY .zshrc.template /usr/local/etc/zshrc.template
+COPY .tmux.conf /usr/local/etc/tmux.conf
 COPY .tmux.conf.local /usr/local/etc/tmux.conf.local
 COPY welcome.sh /usr/local/bin/vibe-welcome
 COPY vibe-shell /usr/local/bin/vibe-shell
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
 RUN chmod +x /usr/local/bin/vibe-welcome /usr/local/bin/vibe-shell /usr/local/bin/docker-entrypoint.sh \
     && cp /usr/local/etc/zshrc.template /home/node/.zshrc \
+    && cp /usr/local/etc/tmux.conf /home/node/.tmux.conf \
     && cp /usr/local/etc/tmux.conf.local /home/node/.tmux.conf.local \
-    && chown node:node /home/node/.zshrc /home/node/.tmux.conf.local
+    && chown node:node /home/node/.zshrc /home/node/.tmux.conf /home/node/.tmux.conf.local
 
 # 8. Directorio de trabajo y usuario final
 WORKDIR /workspace
