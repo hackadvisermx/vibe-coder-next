@@ -35,6 +35,8 @@ Dentro del contenedor tienes configurados estos atajos de 1 y 2 letras:
 
 | Alias | Comando Real | Descripción |
 | :--- | :--- | :--- |
+| `help` | `vibe-help` | Mostrar guía completa de atajos y herramientas |
+| `verify` | `vibe-verify` | Comprobar el estado de las 13 herramientas |
 | `c` | `claude` | Iniciar Claude Code CLI |
 | `cx` | `codex` | Iniciar OpenAI Codex CLI |
 | `rw` | `railway` | CLI de despliegues en Railway |

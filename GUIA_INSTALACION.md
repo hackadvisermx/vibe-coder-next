@@ -182,6 +182,8 @@ Dentro del shell del contenedor (`make shell`):
 
 | Comando / Atajo | ¿Qué hace? |
 | :--- | :--- |
+| `help` | Muestra la **guía interactiva completa de atajos** |
+| `verify` | Comprueba el **estado de las 13 herramientas** |
 | `c` | Inicia **Claude Code CLI** |
 | `cx` | Inicia **OpenAI Codex CLI** |
 | `rw` | Inicia **Railway CLI** |

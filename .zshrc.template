@@ -37,9 +37,9 @@ bindkey '^[[B' history-substring-search-down
 # Aliases y Comandos Globales (Vibe Coding)
 # ==========================================
 # Ayuda y estado
+alias help="vibe-help"
 alias ayuda="vibe-help"
 alias vibe-help="vibe-help"
-alias help-vibe="vibe-help"
 alias verify="vibe-verify"
 alias vibe-verify="vibe-verify"
 alias check="vibe-verify"

@@ -24,6 +24,6 @@ echo -e "  Paquetes:     ${YELLOW}pn${NC} (pnpm) | ${YELLOW}b${NC} (bun) | ${YEL
 echo -e "  Utilidades:   ${YELLOW}ls / ll / tree${NC} (eza) | ${YELLOW}cat${NC} (bat) | ${YELLOW}Ctrl+T / Ctrl+R${NC} (fzf)"
 echo -e "  Prefijo Tmux: ${MAGENTA}Ctrl + a${NC} (o ${MAGENTA}Ctrl + b${NC}) | Desacoplar: ${MAGENTA}prefix + d${NC}"
 echo -e "${GRAY}  ───────────────────────────────────────────────────────────────────${NC}"
-echo -e "  💡 Escribe ${YELLOW}ayuda${NC} (o ${YELLOW}vibe-help${NC}) para ver la guía completa de atajos"
-echo -e "  ✅ Escribe ${YELLOW}verify${NC} (o ${YELLOW}vibe-verify${NC}) para comprobar las 13 herramientas"
+echo -e "  💡 Escribe ${YELLOW}help${NC} para ver la guía completa de atajos y herramientas"
+echo -e "  ✅ Escribe ${YELLOW}verify${NC} para comprobar el estado de las 13 herramientas"
 echo ""

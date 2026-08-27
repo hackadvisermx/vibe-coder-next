@@ -88,6 +88,7 @@ COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/vibe-welcome /usr/local/bin/vibe-shell /usr/local/bin/vibe-help /usr/local/bin/vibe-verify /usr/local/bin/docker-entrypoint.sh \
     && ln -s /usr/local/bin/vibe-verify /usr/local/bin/verify \
     && ln -s /usr/local/bin/vibe-welcome /usr/local/bin/welcome \
+    && ln -s /usr/local/bin/vibe-help /usr/local/bin/help \
     && ln -s /usr/local/bin/vibe-help /usr/local/bin/ayuda \
     && cp /usr/local/etc/zshrc.template /home/node/.zshrc \
     && cp /usr/local/etc/tmux.conf /home/node/.tmux.conf \
