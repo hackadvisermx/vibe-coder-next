@@ -55,9 +55,10 @@ echo -e "  ${GREEN}Clic con Mouse${NC}    Seleccionar panel / Cambiar de pestañ
 echo -e "  ${GREEN}Arrastrar bordes${NC}  Redimensionar paneles con el ratón"
 echo -e "  ${GREEN}Scroll Trackpad${NC}   Desplazarse por el historial de la consola"
 
-echo -e "\n${BOLD}${CYAN}🔑 COMANDOS ÚTILES Y AUTENTICACIÓN:${NC}"
+echo -e "\n${BOLD}${CYAN}🔑 COMANDOS GLOBALES Y DE SISTEMA:${NC}"
+echo -e "  ${YELLOW}ayuda / vibe-help${NC}         Mostrar este manual interactivo"
+echo -e "  ${YELLOW}verify / vibe-verify${NC}      Comprobar el estado de las 13 herramientas"
+echo -e "  ${YELLOW}welcome / bienvenida${NC}      Volver a mostrar el banner de bienvenida"
 echo -e "  ${YELLOW}gh auth login${NC}             Iniciar sesión en GitHub"
 echo -e "  ${YELLOW}rw login --browserless${NC}    Iniciar sesión en Railway"
-echo -e "  ${YELLOW}verify.sh${NC}                 Comprobar el estado de las 13 herramientas"
-echo -e "  ${YELLOW}ayuda / vibe-help${NC}         Mostrar esta pantalla de ayuda"
 echo -e "${CYAN}================================================================================${NC}\n"
