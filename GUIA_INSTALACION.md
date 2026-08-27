@@ -126,6 +126,16 @@ Al entrar, verás el banner **Vibe Coder Next** y se iniciará tu sesión de **T
 
 ---
 
+### Paso 6: (Opcional) Instalar el comando global `vibe`
+Si quieres poder escribir `vibe` en **cualquier carpeta** de tu computadora sin tener que volver a esta ruta:
+
+```bash
+make install-cli
+```
+A partir de ese momento, puedes hacer `cd ~/otra-carpeta` y ejecutar `vibe` para abrir el contenedor montado en esa carpeta.
+
+---
+
 ## 💻 Alternativa Recomendada: Abrir con VS Code (1 Clic)
 
 Si utilizas **Visual Studio Code**:

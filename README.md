@@ -131,6 +131,27 @@ OPENAI_API_KEY=sk-...
 
 ---
 
+### Opción C: Comando Global `vibe` (En CUALQUIER carpeta de tu Mac)
+
+Ya tienes instalado el comando `vibe` en tu sistema (`~/.local/bin/vibe`). Puedes navegar a cualquier carpeta o proyecto de tu computadora y lanzar el contenedor al instante:
+
+```bash
+# Entrar a cualquier carpeta
+cd ~/Documents/mi-otro-proyecto
+
+# Lanzar el entorno Vibe Coder ahí mismo con 1 comando:
+vibe
+
+# O ejecutar comandos específicos directamente:
+vibe pnpm install
+vibe claude
+vibe lazygit
+```
+
+*(Si necesitas reinstalar el comando global en otra máquina, ejecuta `make install-cli`).*
+
+---
+
 ## 🔑 Autenticación Centralizada en tu Mac (`~`)
 
 Las credenciales se almacenan directamente en tu directorio personal de macOS (`~`):
