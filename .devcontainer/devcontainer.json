@@ -7,7 +7,8 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.fontFamily": "'MesloLGS NF', 'FiraCode Nerd Font', 'JetBrainsMono Nerd Font', 'Hack Nerd Font', monospace",
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode"
       },

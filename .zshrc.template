@@ -1,6 +1,10 @@
 # Path to your Oh My Zsh installation.
 export ZSH="/home/node/.oh-my-zsh"
 
+# Soporte completo UTF-8 para iconos y Nerd Fonts
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+
 # Theme
 ZSH_THEME="robbyrussell"
 
@@ -44,10 +48,10 @@ alias b="bun"
 alias dev="npm run dev"
 alias build="npm run build"
 
-# Herramientas modernas de terminal
-alias ls="eza --icons"
-alias ll="eza -la --icons"
-alias tree="eza --tree --icons"
+# Herramientas modernas de terminal con iconos siempre visibles
+alias ls="eza --icons=always"
+alias ll="eza -la --icons=always"
+alias tree="eza --tree --icons=always"
 alias cat="bat --paging=never"
 
 # Banner Vibe Coder Next dentro de Tmux

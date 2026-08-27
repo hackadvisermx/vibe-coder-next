@@ -46,6 +46,17 @@ Esta guía está diseñada para que cualquier compañero del curso pueda clonar 
 
 ---
 
+### 🔤 Fuente Recomendada para Ver Todos los Iconos (Nerd Fonts)
+Para ver los iconos de archivos de `eza` (logos de Docker, Git, JS, etc.) y los símbolos de Tmux en tu terminal:
+* **En VS Code:** Ya está preconfigurado automáticamente en el contenedor.
+* **En tu terminal (iTerm2, Terminal.app, Warp, Windows Terminal):** Instala una **Nerd Font** como **FiraCode Nerd Font** o **MesloLGS NF** ([nerdfonts.com](https://www.nerdfonts.com/font-downloads)) y selecciónala como fuente de tu terminal.
+  ```bash
+  # En macOS con Homebrew:
+  brew install --cask font-fira-code-nerd-font
+  ```
+
+---
+
 ## 🚀 Paso a Paso: Clonar y Poner en Marcha
 
 ### Paso 1: Clonar el Repositorio

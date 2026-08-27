@@ -43,9 +43,9 @@ Dentro del contenedor tienes configurados estos atajos de 1 y 2 letras:
 | `b` | `bun` | Ejecutar Bun |
 | `dev` | `npm run dev` | Iniciar servidor de desarrollo |
 | `build` | `npm run build` | Compilar proyecto |
-| `ls` | `eza --icons` | Listar archivos con iconos |
-| `ll` | `eza -la --icons` | Listar detalles y permisos |
-| `tree` | `eza --tree --icons` | Vista de árbol del proyecto |
+| `ls` | `eza --icons=always` | Listar archivos con iconos |
+| `ll` | `eza -la --icons=always` | Listar detalles y permisos |
+| `tree` | `eza --tree --icons=always` | Vista de árbol del proyecto |
 | `cat` | `bat --paging=never` | Ver archivo con código coloreado |
 
 ---

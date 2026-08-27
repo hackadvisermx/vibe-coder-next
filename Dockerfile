@@ -3,6 +3,10 @@ FROM node:22-bookworm
 # Evitar prompts interactivos durante la instalación
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Soporte completo UTF-8 para iconos y Nerd Fonts
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
 # 1. Instalar herramientas básicas del sistema y utilidades modernas
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
@@ -23,6 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \
     fzf \
     bat \
+    locales \
     && rm -rf /var/lib/apt/lists/* \
     && ln -s /usr/bin/batcat /usr/local/bin/bat
 
@@ -70,14 +75,16 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
 
 USER root
 
-# 7. Copiar scripts y plantilla de zshrc
+# 7. Copiar scripts, plantillas de zshrc y tmux
 COPY .zshrc.template /usr/local/etc/zshrc.template
+COPY .tmux.conf.local /usr/local/etc/tmux.conf.local
 COPY welcome.sh /usr/local/bin/vibe-welcome
 COPY vibe-shell /usr/local/bin/vibe-shell
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/vibe-welcome /usr/local/bin/vibe-shell /usr/local/bin/docker-entrypoint.sh \
     && cp /usr/local/etc/zshrc.template /home/node/.zshrc \
-    && chown node:node /home/node/.zshrc
+    && cp /usr/local/etc/tmux.conf.local /home/node/.tmux.conf.local \
+    && chown node:node /home/node/.zshrc /home/node/.tmux.conf.local
 
 # 8. Directorio de trabajo y usuario final
 WORKDIR /workspace

@@ -9,8 +9,10 @@ services:
     stdin_open: true
     tty: true
     environment:
-      # Historial de comandos guardado por proyecto
-      - HISTFILE=/workspace/.bash_history
+      # UTF-8 Locale para soporte de iconos y Nerd Fonts
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8
+      - HISTFILE=/workspace/.zsh_history
     env_file:
       - path: .env
         required: false
